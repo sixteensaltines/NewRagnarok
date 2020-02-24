@@ -20,6 +20,7 @@ public class Inputs : MonoBehaviour
 
     //Bloqueo de botones basico
     public bool BlockButtons = false;
+    public bool QuitForces = false;
 
 
     void Update()
@@ -36,7 +37,7 @@ public class Inputs : MonoBehaviour
 
 
         }
-        if (BlockButtons)
+        if (BlockButtons && QuitForces) 
         {
             B_AxisHorizontal = 0.0f;
         }
@@ -79,10 +80,10 @@ public class Inputs : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        /*if (Input.GetButtonDown("Jump"))
         {
             B_Jump = true;
-        }
+        }*/B_Jump = Input.GetButtonDown("Jump");
     }
 
     public void Dash()
