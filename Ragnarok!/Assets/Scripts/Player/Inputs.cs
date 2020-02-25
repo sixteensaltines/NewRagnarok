@@ -14,6 +14,8 @@ public class Inputs : MonoBehaviour
     public bool B_PlayMode;
 
     public bool B_Jump;
+    public bool B_JumpUp;
+    public bool B_JumpHold;
     public bool B_Hit;
     public bool B_Block;
     public bool B_Dash;
@@ -35,7 +37,7 @@ public class Inputs : MonoBehaviour
             Hit();
             Dash();
 
-
+ 
         }
         if (BlockButtons && QuitForces) 
         {
@@ -80,10 +82,9 @@ public class Inputs : MonoBehaviour
 
     public void Jump()
     {
-        /*if (Input.GetButtonDown("Jump"))
-        {
-            B_Jump = true;
-        }*/B_Jump = Input.GetButtonDown("Jump");
+        B_JumpUp= Input.GetButtonUp("Jump");
+        B_Jump = Input.GetButtonDown("Jump");
+        B_JumpHold = Input.GetButton("Jump");
     }
 
     public void Dash()
