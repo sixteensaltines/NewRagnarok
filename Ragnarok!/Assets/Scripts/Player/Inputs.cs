@@ -7,7 +7,7 @@ public class Inputs : MonoBehaviour
     public float B_AxisHorizontal;
 
     //Por donde ira la guardia del block y el hit
-    public bool B_GuardUp;        
+    public bool B_GuardUp;
     public bool B_GuardMid;
 
     //Modos de juego//True: Guard//False: Exploration
@@ -21,7 +21,10 @@ public class Inputs : MonoBehaviour
     //Bloqueo de botones basico
     public bool BlockButtons = false;
 
-
+    private void Start()
+    {
+        B_GuardMid = true;
+    }
     void Update()
     {
         if (!BlockButtons)
@@ -33,8 +36,6 @@ public class Inputs : MonoBehaviour
             Jump();           
             Hit();
             Dash();
-
-
         }
         if (BlockButtons)
         {
