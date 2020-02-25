@@ -6,7 +6,7 @@ public class Inputs : MonoBehaviour
 {   
     public float B_AxisHorizontal;
 
-    //Por donde ira la guardia del block y el hit
+    //Por donde ira la guardia del block y el Attack
     public bool B_GuardUp;        
     public bool B_GuardMid;
 
@@ -14,7 +14,7 @@ public class Inputs : MonoBehaviour
     public bool B_PlayMode;
 
     public bool B_Jump;
-    public bool B_Hit;
+    public bool B_Attack;
     public bool B_Block;
     public bool B_Dash;
 
@@ -31,7 +31,7 @@ public class Inputs : MonoBehaviour
             Guard();
             Block();
             Jump();           
-            Hit();
+            Attack();
             Dash();
 
 
@@ -93,11 +93,11 @@ public class Inputs : MonoBehaviour
         }
     }
     
-    public void Hit()
+    public void Attack()
     {
-        if (Input.GetButtonDown("Hit"))
+        if (Input.GetButtonDown("Attack"))
         {
-            B_Hit = true;
+            B_Attack = true;
         }
     }
     public void Block()
