@@ -103,14 +103,14 @@ public class Inputs : MonoBehaviour
     }
     public void Block()
     {
-        if (Input.GetButton("Block"))
-        {
-            B_Block = true;
-        }
-        else
-        {
-            B_Block = false;
-        }
+        B_Block = Input.GetButton("Block");
+
+
+
+
+
+
+
     }
 }
 

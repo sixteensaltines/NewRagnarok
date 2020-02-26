@@ -6,81 +6,89 @@ public class BlockPlayer : MonoBehaviour
 {
     public Inputs En_Inputs;
 
-    public Transform Pivot;
-    public Transform Shield;
+    public Transform T_Centro;
+    public Transform T_FrontMIDRay;
+    public Transform T_FrontUPRay;
+    public Transform T_BackRay;
 
-    Vector3 V_PositionShieldRest = new Vector3 (-0.306f,0.107f,0f);
-    Quaternion Q_ShieldRotationRest = new Quaternion(0, 0, 0, 0);
+    private Vector2 V_Centro;
+    private Vector2 V_FrontMIDRay;
+    private Vector2 V_FrontUPRay;
+    private Vector2 V_BackRay;
 
-    Vector3 V_PositionShieldOpen = new Vector3(-0.545f, 0.107f, 0);
+    public float CastDist;
 
-    Quaternion Q_RotationShieldFrontMID = new Quaternion(0, 0, -180, 0);
-    Quaternion Q_RotationShieldFrontUP = new Quaternion(0, 0, -154, 0);
-    Quaternion Q_RotationShieldBackMID = new Quaternion(0, 0, 0, 0);
-    Quaternion Q_RotationShieldBackUP = new Quaternion(0, 0, -19, 0);
+    public RaycastHit2D hit;
+    private void Start()
+    {
 
-
-    bool YaBlockFrontMID;
-    bool YaBlockFrontUP;
-
+    }
     void Update()
+    {
+        WhereIsShield();
+        Picking();
+        DrawRay();
+
+    }
+    void WhereIsShield()
     {
         if (En_Inputs.B_Block)
         {
-            if (En_Inputs.B_PlayMode)
+            if (En_Inputs.B_Block && En_Inputs.B_GuardMid)
             {
-                BlockGuard();
+                BlockMid();              
+            }
+            if (En_Inputs.B_Block && En_Inputs.B_GuardUp)
+            {
+                BlockUp();
+            }
+            //TODO: Falta Control de block por atras. 
+        }
+        //default IdleShield
+    }
+    void BlockMid()
+    {
+        
+    }
+    void BlockUp()
+    {
+        
+    }
+    void BlockBack()
+    {
+        
+    }
+    void Picking()
+    {
+        V_Centro = new Vector2(T_Centro.position.x, T_Centro.position.y);
+        V_FrontMIDRay = new Vector2(T_FrontMIDRay.position.x, T_FrontMIDRay.position.y);
+        V_FrontUPRay = T_FrontUPRay.position;
+        V_BackRay = T_BackRay.position;
+
+        hit = Physics2D.Linecast(V_Centro, V_FrontMIDRay , 1 << LayerMask.NameToLayer("Action"));
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                //AccionAGolpeEnemigo
             }
             else
             {
-                BlockFrontMID();
+                //AccionAGolpeEnemigo
             }
-        }
-        else
-        {
-            Shield.transform.localPosition = V_PositionShieldRest;
-            Pivot.transform.localRotation = Q_ShieldRotationRest;
-            YaBlockFrontMID = false;
         }
 
     }
-    void BlockGuard()
+    void DrawRay()
     {
-        if (En_Inputs.B_GuardMid)
+        if (hit.collider != null)
         {
-            YaBlockFrontUP = false;
-            BlockFrontMID();
+            Debug.DrawLine(T_Centro.position, hit.point, Color.green);
         }
-        if (En_Inputs.B_GuardUp)
+        else
         {
-            YaBlockFrontMID = false;
-            BlockFrontUP();
+            Debug.DrawLine(V_Centro, V_FrontMIDRay, Color.blue);
         }
-    }
-    void BlockFrontMID()
-    {
-        if (!YaBlockFrontMID)
-        {
-            Invoke("AnimationBlockFrontMID", 0.30f);
-        }
-    }
-    void AnimationBlockFrontMID()
-    {
-        Shield.transform.localPosition = V_PositionShieldOpen;
-        Pivot.transform.localRotation = Q_RotationShieldFrontMID;
-        YaBlockFrontMID = true;
-    }
-    void BlockFrontUP()
-    {
-        if (!YaBlockFrontUP)
-        {
-            Invoke("AnimationBlockFrontUP", 0.30f);
-        }
-    }
-    void AnimationBlockFrontUP()
-    {
-        Shield.transform.localPosition = V_PositionShieldOpen;
-        Pivot.transform.localRotation = Q_RotationShieldFrontUP;
-        YaBlockFrontUP = true;
     }
 }
