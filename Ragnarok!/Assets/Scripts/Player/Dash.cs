@@ -14,30 +14,43 @@ public class Dash : MonoBehaviour
     void Start()
     {
         R_Player = GetComponent<Rigidbody2D>();
-        DashDerecha = true;
     }
 
     void Update()
-    {
+    {        
         if(En_Inputs.B_AxisHorizontal <= -0.1)
-        {
-            DashIzquierda = true;
+        {            
             DashDerecha = false;
+            DashIzquierda = true;
         }
-        if(En_Inputs.B_AxisHorizontal >= 0.1)
+        if (En_Inputs.B_AxisHorizontal >= 0.1)
         {
             DashDerecha = true;
             DashIzquierda = false;
         }
+        if(!En_Inputs.B_PlayMode)
+        {
+            FuerzaDash = 7f;
+        }
+        else
+        {
+            FuerzaDash = 6f;
+        }
+        if(En_Inputs.B_AxisHorizontal == 0 && En_Inputs.B_Dash)
+        {
+            En_Inputs.B_Dash = false;
+        }
+
+
 
         if (En_Inputs.B_Dash && DashDerecha)
         {
             R_Player.velocity = Vector2.right * FuerzaDash;
-            En_Inputs.B_Dash = false;         
+            En_Inputs.B_Dash = false;
             Invoke("ParaElDash", 0.75f);
 
         }
-        if(En_Inputs.B_Dash && DashIzquierda)
+        if (En_Inputs.B_Dash && DashIzquierda)
         {
             R_Player.velocity = Vector2.left * FuerzaDash;
             En_Inputs.B_Dash = false;

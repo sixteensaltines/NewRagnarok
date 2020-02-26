@@ -644,5 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   En_Inputs: {fileID: 559433176}
-  FuerzaDash: 7
-  SeEstaMoviendo: 0
+  DashIzquierda: 0
+  DashDerecha: 0
+  FuerzaDashModoExploracion: 7
+  FuerzaDashModoGuardia: 6
