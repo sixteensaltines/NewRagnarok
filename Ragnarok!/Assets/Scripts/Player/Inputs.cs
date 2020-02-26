@@ -31,7 +31,10 @@ public class Inputs : MonoBehaviour
         {
             Axis();
             ModePlay();
-            Guard();
+            if (B_PlayMode)
+            {
+             Guard();
+            }
             Block();
             Jump();           
             Hit();
@@ -61,6 +64,8 @@ public class Inputs : MonoBehaviour
             else
             {
                 B_PlayMode = true;
+                B_GuardUp = false;
+                B_GuardMid = true;
             }
         }
     }

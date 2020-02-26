@@ -16,56 +16,81 @@ public class BlockPlayer : MonoBehaviour
     private Vector2 V_FrontUPRay;
     private Vector2 V_BackRay;
 
+    private Vector2 Rayito;
+
     public float CastDist;
 
     public RaycastHit2D hit;
-    private void Start()
-    {
 
-    }
+    /*public bool ShieldActive;
+    public bool YaActivo;
+    public float TimeActiveShield;*/
     void Update()
     {
-        WhereIsShield();
-        Picking();
-        DrawRay();
+        V_Centro = new Vector2(T_Centro.position.x, T_Centro.position.y);
 
+        WhereIsShield();
+
+        //EN CASO DE QUE LO STUNEEN (ROMPAN DEFENSA)
+        /*void Update()
+         * {
+         *  * if(BreakDefense)
+         *      {
+         *      Stun.Stuned = true;
+         *      En_Inputs.BlockButtons = true;
+         *      invoke("Restore",1f)
+         *      }
+         * }
+         * void Restore()
+         * {
+         *      Stun.Stuned=false;
+         *      En_Inputs.BlockButtons = false;
+         * }
+        */
     }
     void WhereIsShield()
     {
+
         if (En_Inputs.B_Block)
         {
-            if (En_Inputs.B_Block && En_Inputs.B_GuardMid)
+            /*if (!YaActivo)
             {
-                BlockMid();              
-            }
-            if (En_Inputs.B_Block && En_Inputs.B_GuardUp)
-            {
-                BlockUp();
-            }
+                Invoke("ActiveShield", TimeActiveShield);
+            }*/
+
+
+            //if (ShieldActive)
+            //{
+                //YaActivo = true;
+                if (En_Inputs.B_Block && En_Inputs.B_GuardMid)
+                {
+                    Rayito = new Vector2(T_FrontMIDRay.position.x, T_FrontMIDRay.position.y);
+                }
+                if (En_Inputs.B_Block && En_Inputs.B_GuardUp)
+                {
+                    Rayito = new Vector2(T_FrontUPRay.position.x, T_FrontUPRay.position.y);
+                }
+                Picking();
+                DrawRay();
+            //}
+
             //TODO: Falta Control de block por atras. 
+        }
+        else
+        {
+            /*ShieldActive = false;
+            YaActivo = false;*/
         }
         //default IdleShield
     }
-    void BlockMid()
+
+    /*void BlockBack()
     {
-        
-    }
-    void BlockUp()
-    {
-        
-    }
-    void BlockBack()
-    {
-        
-    }
+        V_BackRay = new Vector2(T_BackRay.position.x, T_BackRay.position.y);
+    }*/
     void Picking()
     {
-        V_Centro = new Vector2(T_Centro.position.x, T_Centro.position.y);
-        V_FrontMIDRay = new Vector2(T_FrontMIDRay.position.x, T_FrontMIDRay.position.y);
-        V_FrontUPRay = T_FrontUPRay.position;
-        V_BackRay = T_BackRay.position;
-
-        hit = Physics2D.Linecast(V_Centro, V_FrontMIDRay , 1 << LayerMask.NameToLayer("Action"));
+        hit = Physics2D.Linecast(V_Centro, Rayito , 1 << LayerMask.NameToLayer("Action"));
 
         if (hit.collider != null)
         {
@@ -78,7 +103,6 @@ public class BlockPlayer : MonoBehaviour
                 //AccionAGolpeEnemigo
             }
         }
-
     }
     void DrawRay()
     {
@@ -88,7 +112,11 @@ public class BlockPlayer : MonoBehaviour
         }
         else
         {
-            Debug.DrawLine(V_Centro, V_FrontMIDRay, Color.blue);
+            Debug.DrawLine(V_Centro, Rayito, Color.blue);
         }
     }
+    /*void ActiveShield()
+    {
+        ShieldActive = true;
+    }*/
 }

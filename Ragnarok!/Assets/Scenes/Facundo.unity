@@ -2202,7 +2202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934362f7e73a5cc439b722365c29987f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  En_Inputs: {fileID: 0}
+  En_Inputs: {fileID: 2028956070}
   T_Centro: {fileID: 1408940536}
   T_FrontMIDRay: {fileID: 608578414}
   T_FrontUPRay: {fileID: 644885607}
