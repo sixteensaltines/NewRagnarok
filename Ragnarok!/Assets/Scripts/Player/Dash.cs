@@ -4,33 +4,55 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-
     public Inputs En_Inputs;
 
+    public bool DashIzquierda;
+    public bool DashDerecha;
     public float FuerzaDash;
-    public bool SeEstaMoviendo = false;
-    Rigidbody2D R_Player;
 
+    Rigidbody2D R_Player;
     void Start()
     {
         R_Player = GetComponent<Rigidbody2D>();
+        DashDerecha = true;
     }
 
     void Update()
     {
-        if (En_Inputs.B_Dash)
+        if(En_Inputs.B_AxisHorizontal <= -0.1)
         {
-            SeEstaMoviendo = true;
-            R_Player.velocity = Vector2.right * FuerzaDash;
-            En_Inputs.B_Dash = false;         
-            Invoke("CheckMov", 0.75f);
-
+            DashIzquierda = true;
+            DashDerecha = false;
+        }
+        if(En_Inputs.B_AxisHorizontal >= 0.1)
+        {
+            DashDerecha = true;
+            DashIzquierda = false;
         }
 
+        if (En_Inputs.B_Dash && DashDerecha)
+        {
+            R_Player.velocity = Vector2.right * FuerzaDash;
+            En_Inputs.B_Dash = false;         
+            Invoke("ParaElDash", 0.75f);
+
+        }
+        if(En_Inputs.B_Dash && DashIzquierda)
+        {
+            R_Player.velocity = Vector2.left * FuerzaDash;
+            En_Inputs.B_Dash = false;
+            En_Inputs.BlockButtons = true;
+
+            Invoke("ParaElDash", 0.75f);
+            Invoke("DevuelveInputs", 0.75f);
+        }
     }
-    public void CheckMov()
+    public void ParaElDash()
     {
-        SeEstaMoviendo = false;
         R_Player.velocity = Vector2.zero;
+    }
+    public void DevuelveInputs()
+    {
+        En_Inputs.BlockButtons = false;
     }
 }
