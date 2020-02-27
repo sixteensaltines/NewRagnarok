@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int Health;
+    public float Health;
 
     void Update()
     {
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void TakeDamage(int Damage)
+    public void TakeDamage(float Damage)
     {
         Health -= Damage;
         Debug.Log("Daño = "+ Damage);
