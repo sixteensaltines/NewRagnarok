@@ -22,7 +22,22 @@ public class BlockPlayer : MonoBehaviour
 
     public RaycastHit2D hit;
 
+    //ShieldFront
+    public float CountHold; 
+    public bool ActiveCountDown;
+    public float CountTimeDown;
+    public bool FrontActive;
 
+    //ShieldBack
+    public bool FirstPush = true;
+    public bool WaitSecondPush;
+    public bool SecondPush;
+    public bool BlockBack;
+
+    private bool CountBackActive;
+    public float CountTimeDownBack;
+    public float CountTimeBack;
+    private bool CancelShieldBack;
 
     void Update()
     {
@@ -50,32 +65,108 @@ public class BlockPlayer : MonoBehaviour
     void WhereIsShield()
     {
 
-        if (En_Inputs.B_Block)
+        if (En_Inputs.BH_Block)
         {
+            ActiveCountDown = true;
 
-                if (En_Inputs.B_Block && En_Inputs.B_GuardMid)
+            if (SecondPush)
+            {
+                CountBackActive = false;
+
+                if (!CancelShieldBack)
+                {
+                    BlockBack = true;
+
+                    Rayito = new Vector2(T_BackRay.position.x, T_BackRay.position.y);
+
+                    Picking();
+                    DrawRay();
+                }
+            }
+
+            CounterShield();
+
+            if (FrontActive && !BlockBack)
+            {
+                if (En_Inputs.BH_Block && En_Inputs.B_GuardMid)
                 {
                     Rayito = new Vector2(T_FrontMIDRay.position.x, T_FrontMIDRay.position.y);
                 }
-                if (En_Inputs.B_Block && En_Inputs.B_GuardUp)
+                if (En_Inputs.BH_Block && En_Inputs.B_GuardUp)
                 {
                     Rayito = new Vector2(T_FrontUPRay.position.x, T_FrontUPRay.position.y);
                 }
                 Picking();
                 DrawRay();
-
+            }
         }
         else
         {
+            CountTimeDown = CountHold;
+            ActiveCountDown = false;
+            FrontActive = false;
+
+            //default IdleShield
+        }
+        if (En_Inputs.BD_Block)
+        {
+            if (FirstPush && En_Inputs.B_PlayMode)
+            {
+                WaitSecondPush = true;
+                CountBackActive = true;
+                CancelShieldBack = false;
+                FirstPush = false;
+                CountTimeDownBack = CountTimeBack;
+
+            }
+        }
+        if (En_Inputs.BU_Block)
+        {
+            if (WaitSecondPush)
+            {
+                SecondPush = true;
+                WaitSecondPush = false;
+            }
+            if (En_Inputs.BU_Block && BlockBack)
+            {
+                FirstPush = true;
+                SecondPush = false;
+                WaitSecondPush = false;
+                BlockBack = false;
+                CancelShieldBack = true;
+            }
 
         }
-        //default IdleShield
-    }
 
-    /*void BlockBack()
+    }
+    void CounterShield()
     {
-        V_BackRay = new Vector2(T_BackRay.position.x, T_BackRay.position.y);
-    }*/
+        //CounterFront
+        if (ActiveCountDown)
+        {
+            CountTimeDown -= Time.deltaTime;
+        }
+        if (CountTimeDown <= 0)
+        {
+            FrontActive = true;
+        }
+        //CounterBack
+        if (CountBackActive)
+        {
+            CountTimeDownBack -= Time.deltaTime;
+        }
+        if (CountTimeDownBack <= 0)
+        {
+            CancelShieldBack = true;
+            CountBackActive = false;
+
+            FirstPush = true;
+            SecondPush = false;
+            WaitSecondPush = false;
+            BlockBack = false;
+
+        }
+    }
     void Picking()
     {
         hit = Physics2D.Linecast(V_Centro, Rayito , 1 << LayerMask.NameToLayer("Action"));

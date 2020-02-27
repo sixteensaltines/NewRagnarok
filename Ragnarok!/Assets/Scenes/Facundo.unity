@@ -2255,6 +2255,16 @@ MonoBehaviour:
   T_FrontUPRay: {fileID: 644885607}
   T_BackRay: {fileID: 1913770779}
   CastDist: 100
+  CountHold: 0.3
+  ActiveCountDown: 0
+  CountTimeDown: 0
+  FrontActive: 0
+  FirstPush: 1
+  WaitSecondPush: 0
+  SecondPush: 0
+  BlockBack: 0
+  CountTimeDownBack: 0
+  CountTimeBack: 0.03
 --- !u!1 &2028956069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,7 +2300,9 @@ MonoBehaviour:
   B_PlayMode: 0
   B_Jump: 0
   B_Hit: 0
-  B_Block: 0
+  BH_Block: 0
+  BD_Block: 0
+  BU_Block: 0
   B_Dash: 0
   BlockButtons: 0
 --- !u!4 &2028956071

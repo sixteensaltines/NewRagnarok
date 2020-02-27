@@ -15,7 +15,9 @@ public class Inputs : MonoBehaviour
 
     public bool B_Jump;
     public bool B_Hit;
-    public bool B_Block;
+    public bool BH_Block;
+    public bool BD_Block;
+    public bool BU_Block;
     public bool B_Dash;
 
     //Bloqueo de botones basico
@@ -108,8 +110,9 @@ public class Inputs : MonoBehaviour
     }
     public void Block()
     {
-        B_Block = Input.GetButton("Block");
-
+        BH_Block = Input.GetButton("Block");
+        BD_Block = Input.GetButtonDown("Block");
+        BU_Block = Input.GetButtonUp("Block");
 
 
 
