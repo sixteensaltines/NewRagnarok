@@ -22,9 +22,8 @@ public class BlockPlayer : MonoBehaviour
 
     public RaycastHit2D hit;
 
-    /*public bool ShieldActive;
-    public bool YaActivo;
-    public float TimeActiveShield;*/
+
+
     void Update()
     {
         V_Centro = new Vector2(T_Centro.position.x, T_Centro.position.y);
@@ -53,15 +52,7 @@ public class BlockPlayer : MonoBehaviour
 
         if (En_Inputs.B_Block)
         {
-            /*if (!YaActivo)
-            {
-                Invoke("ActiveShield", TimeActiveShield);
-            }*/
 
-
-            //if (ShieldActive)
-            //{
-                //YaActivo = true;
                 if (En_Inputs.B_Block && En_Inputs.B_GuardMid)
                 {
                     Rayito = new Vector2(T_FrontMIDRay.position.x, T_FrontMIDRay.position.y);
@@ -72,14 +63,11 @@ public class BlockPlayer : MonoBehaviour
                 }
                 Picking();
                 DrawRay();
-            //}
 
-            //TODO: Falta Control de block por atras. 
         }
         else
         {
-            /*ShieldActive = false;
-            YaActivo = false;*/
+
         }
         //default IdleShield
     }
@@ -115,8 +103,4 @@ public class BlockPlayer : MonoBehaviour
             Debug.DrawLine(V_Centro, Rayito, Color.blue);
         }
     }
-    /*void ActiveShield()
-    {
-        ShieldActive = true;
-    }*/
 }
