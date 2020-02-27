@@ -21,7 +21,7 @@ public class Attack : MonoBehaviour
     }
     private void StartAttack()
     {
-        if (_cooldownTimer <= 0 && En_Inputs.B_Attack==true)
+        if (_cooldownTimer <= 0 && En_Inputs.B_Attack==true&& En_Inputs.B_PlayMode ==false)
         {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(T_AttackPosition.position, _AttackRange, _WhatIsEnemies);
             //este for aplica una instancia de daño a todo lo que golpee
