@@ -21,7 +21,7 @@ public class XMovement : MonoBehaviour
     private void FixedUpdate()
     {
         moveCharacter(v_Movement);
-        { }
+        
     }
 
     void moveCharacter(Vector2 direction)
