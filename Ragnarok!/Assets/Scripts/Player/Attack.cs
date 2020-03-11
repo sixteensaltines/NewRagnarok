@@ -12,15 +12,7 @@ public class Attack : MonoBehaviour
     public float _AttackCd = 1.5f;          //Intervalo entre ataques
     public float _AttackRange;              //Rango del ataque
     public float _Damage;                   //Daño del Ataque
-    
 
-
-    
-
-
-    
-
-    
     void Update()
     {
         if (En_Inputs.B_PlayMode == false)
