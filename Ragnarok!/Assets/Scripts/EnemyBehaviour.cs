@@ -24,6 +24,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         intTimer = timer;
     }
+
+    private void OnTriggerEnter2D(Collider2D trig)
+    {
+        if (trig.gameObject.tag == "Player")
+        {
+            target = trig.transform;
+            inRange = true;
+        }
+    }
+
     void Update()
     {
         if(inRange == true)
@@ -75,14 +85,7 @@ public class EnemyBehaviour : MonoBehaviour
         cooling = false;
         attackMode = false;
     }
-    private void OnTriggerEnter2D(Collider2D trig)
-    {
-        if(trig.gameObject.tag == "Player")
-        {
-            target = trig.transform;
-            inRange = true;
-        }
-    }
+   
     void RaycastDebugger()
     {
         if(distance > attackDistance)
