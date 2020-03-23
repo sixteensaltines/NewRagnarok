@@ -19,12 +19,10 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private bool inRange;
     [SerializeField] private bool cooling;
     [SerializeField] private float intTimer;
-
     private void Awake()
     {
         intTimer = timer;
     }
-
     private void OnTriggerEnter2D(Collider2D trig)
     {
         if (trig.gameObject.tag == "Player")
@@ -33,7 +31,6 @@ public class EnemyBehaviour : MonoBehaviour
             inRange = true;
         }
     }
-
     void Update()
     {
         if(inRange == true)
@@ -42,7 +39,6 @@ public class EnemyBehaviour : MonoBehaviour
             hit2= Physics2D.Raycast(rayCast.position, Vector2.right, rayCastLength, raycastMask);
             RaycastDebugger();
         }
-
         if(hit.collider != null || hit2.collider !=null)
         {
             EnemyLogic();
@@ -63,10 +59,12 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Move();
             StopAttack();
+            
         }
         else if (attackDistance>= distance && cooling == false)
         {
             Attack();
+            Block();
         }
     }
     void Move()
@@ -74,18 +72,19 @@ public class EnemyBehaviour : MonoBehaviour
         Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
+    void Block()
+    {
+    }
     void Attack()
     {
         timer = intTimer;
         attackMode = true;
-
     }
     void StopAttack()
     {
         cooling = false;
         attackMode = false;
     }
-   
     void RaycastDebugger()
     {
         if(distance > attackDistance)
