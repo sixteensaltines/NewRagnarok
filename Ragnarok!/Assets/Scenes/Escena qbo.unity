@@ -238,6 +238,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &712291724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712291725}
+  m_Layer: 8
+  m_Name: AttackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &712291725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712291724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.24, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1870043403}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &727982074
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +481,7 @@ GameObject:
   - component: {fileID: 894741699}
   - component: {fileID: 894741701}
   - component: {fileID: 894741700}
+  - component: {fileID: 894741702}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -711,6 +742,19 @@ MonoBehaviour:
   TiempoComboDefault: 0
   TiempoReinicioCombo: 0
   ActivarAtaque: 0
+--- !u!114 &894741702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894741689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c951f0383fe0b1741bac174f6309be2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHP: 20
 --- !u!1 &917175334
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +875,12 @@ MonoBehaviour:
   attackDistance: 5
   moveSpeed: 3
   timer: 0
+  AttackPosition: {fileID: 0}
+  AttackRange: 10
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  Damage: 10
   target: {fileID: 0}
   distance: 0
   attackMode: 0
@@ -1232,6 +1282,7 @@ Transform:
   - {fileID: 1430010432}
   - {fileID: 917175335}
   - {fileID: 448870298}
+  - {fileID: 712291725}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1289,6 +1340,12 @@ MonoBehaviour:
   attackDistance: 5
   moveSpeed: 3
   timer: 0
+  AttackPosition: {fileID: 712291725}
+  AttackRange: 10
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  Damage: 10
   target: {fileID: 0}
   distance: 0
   attackMode: 0

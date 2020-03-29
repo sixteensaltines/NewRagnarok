@@ -11,6 +11,12 @@ public class EnemyBehaviour : MonoBehaviour
     public float moveSpeed;
     public float timer;
 
+    //esto es l ode ataque y  queda asi hasta tener animaciones y probar nuevo metodo
+    public Transform AttackPosition;
+    public float AttackRange = 10.0f;
+    public LayerMask PlayerLayer;
+    public float Damage = 10.0f;
+
     private RaycastHit2D hit;
     private RaycastHit2D hit2;
     [SerializeField] private Transform target;
@@ -19,9 +25,12 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private bool inRange;
     [SerializeField] private bool cooling;
     [SerializeField] private float intTimer;
+    private Animator animator;
     private void Awake()
     {
         intTimer = timer;
+        /* esto llama al animador pegado al enemigo
+        animator = GetComponent<Animator>();*/
     }
     private void OnTriggerEnter2D(Collider2D trig)
     {
@@ -49,6 +58,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         if (inRange == false)
         {
+            // Acá se agrega la animacion "idle" si hay una o un punto para parar todas las animaciones ya que el enemigo esta estatico
             StopAttack();
         }
     }
@@ -59,16 +69,21 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Move();
             StopAttack();
-            
         }
         else if (attackDistance>= distance && cooling == false)
         {
             Attack();
             Block();
         }
+        if (cooling)
+        {
+            //Detener la animacion de ATAQUE 
+        }
     }
     void Move()
     {
+        //Se puede agregar un IF para checkear que no se este reproduciendo la animacion de ataque antes de que se empieze a mover
+        //Reproducir animacion de MOVIMIENTO
         Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
@@ -77,13 +92,22 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Attack()
     {
+        Collider2D[] LecturaEnemigo = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, PlayerLayer);
+        for (int i = 0; i < LecturaEnemigo.Length; i++)
+        {
+
+            //la funcion "Take damage" la estaba usando para probar si funcionaba, la dejo porque puede servir
+            LecturaEnemigo[i].GetComponent<Vida>().TakeDamage(Damage);
+        }
         timer = intTimer;
         attackMode = true;
+        //Reproducir la animacion de ATAQUE
     }
     void StopAttack()
     {
         cooling = false;
         attackMode = false;
+        //Detener la animacion de ataque
     }
     void RaycastDebugger()
     {
