@@ -1,0 +1,44 @@
+Relaccion de aspecto
+
+Capas
+
+1 delante del player (0,0,0)
+0 Player(10,10,10)
+-1 Bloom
+-2 Gris (35,35,35)
+-3 Bloom
+-4 Gris final(50,50,50)
+-5 light
+-6 light Bloom
+
+Blureado
+
+Bloom
+
+Vignette
+
+Grain
+
+ColorGrading
+
+Colores
+
+Fog
+
+Polvo
+
+____________
+
+
+
+
+Camera Velocity
+
+Velocidad Parallax
+
+Como van a ir pegados los objetos a la camara
+
+
+
+
+
