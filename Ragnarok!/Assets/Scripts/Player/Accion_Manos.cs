@@ -26,14 +26,14 @@ public class Accion_Manos : MonoBehaviour
     {
         if (En_BloqueoV2.ActivarEscudo_Frente || En_BloqueoV2.ActivarEscudo_Atras || En_Inputs.BD_Attack)
         {
-            /*Collider2D[] LecturaEnemigo = Physics2D.OverlapCircleAll(t_ManosPosition.position, RangoManos, Enemigo);
-            Lee todo lo que este dentro del rango (TODAS LAS CAPAS) 
+            Collider2D[] LecturaEnemigo = Physics2D.OverlapCircleAll(T_ManosFrente.position, RangoManos, Enemigo);
+            //Lee todo lo que este dentro del rango (TODAS LAS CAPAS) 
             for (int i = 0; i < LecturaEnemigo.Length; i++)
             {
 
-                la funcion "Take damage" la estaba usando para probar si funcionaba, la dejo porque puede servir
-                LecturaEnemigo[i].GetComponent<Enemigo>().TakeDamage(_Damage);
-            }*/
+                //la funcion "Take damage" la estaba usando para probar si funcionaba, la dejo porque puede servir
+                LecturaEnemigo[i].GetComponent<Enemy>().TakeDamage(10);
+            }
         }
     }
 

@@ -103,5 +103,3 @@ public class BloqueoV2 : MonoBehaviour
         }
     }
 }
-  
-

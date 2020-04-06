@@ -13,10 +13,14 @@ public class EnemyBehaviour : MonoBehaviour
 
     //esto es l ode ataque y  queda asi hasta tener animaciones y probar nuevo metodo
     public Transform AttackPosition;
+    public Transform AttackPosition2;
     public float AttackRange = 10.0f;
     public LayerMask PlayerLayer;
     public float Damage = 10.0f;
-
+    [SerializeField]private float TimeBtwAttack = 0f;
+    public float StartTimeBtwAttack = 2.0f;
+    //
+    
     private RaycastHit2D hit;
     private RaycastHit2D hit2;
     [SerializeField] private Transform target;
@@ -70,11 +74,15 @@ public class EnemyBehaviour : MonoBehaviour
             Move();
             StopAttack();
         }
-        else if (attackDistance>= distance && cooling == false)
+        else if (attackDistance>= distance && cooling == false && TimeBtwAttack<=0)
         {
             Attack();
-            Block();
         }
+        if (TimeBtwAttack >= 0)
+        {
+            TimeBtwAttack -= Time.deltaTime;
+        }
+        
         if (cooling)
         {
             //Detener la animacion de ATAQUE 
@@ -87,19 +95,21 @@ public class EnemyBehaviour : MonoBehaviour
         Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
-    void Block()
-    {
-    }
+
     void Attack()
     {
+        Collider2D[] caca = Physics2D.OverlapCircleAll(AttackPosition2.position, AttackRange, PlayerLayer);
+        for (int i = 0; i < caca.Length; i++)
+        {  
+            caca[i].GetComponent<Vida>().TakeDamage(Damage);
+        }
         Collider2D[] LecturaEnemigo = Physics2D.OverlapCircleAll(AttackPosition.position, AttackRange, PlayerLayer);
         for (int i = 0; i < LecturaEnemigo.Length; i++)
-        {
-
-            //la funcion "Take damage" la estaba usando para probar si funcionaba, la dejo porque puede servir
+        { 
             LecturaEnemigo[i].GetComponent<Vida>().TakeDamage(Damage);
         }
-        timer = intTimer;
+        TimeBtwAttack = StartTimeBtwAttack;
+        // timer = intTimer;
         attackMode = true;
         //Reproducir la animacion de ATAQUE
     }
