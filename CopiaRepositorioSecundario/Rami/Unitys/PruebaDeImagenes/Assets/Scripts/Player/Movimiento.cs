@@ -7,21 +7,24 @@ public class Movimiento : MonoBehaviour
     
     public Inputs En_Inputs;
 
-    private Rigidbody2D rb;
-
     public float Speed;
+    private float fixedSpeed;
     public float velocity;
+
+    public void Update()
+    {
+        fixedSpeed = Speed * Time.deltaTime;
+    }
 
     private void FixedUpdate()
     {
         if (En_Inputs.BH_Right)
         {
-
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + velocity, transform.position.y), Speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + velocity, transform.position.y), fixedSpeed);
         }
         if (En_Inputs.BH_Left)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - velocity, transform.position.y), Speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - velocity, transform.position.y), fixedSpeed);
         }
     }
 
