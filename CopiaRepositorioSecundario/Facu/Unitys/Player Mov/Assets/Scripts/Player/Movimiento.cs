@@ -8,7 +8,6 @@ public class Movimiento : MonoBehaviour
 
     public float Speed;
 
-
     private void FixedUpdate()
     {
         if (En_Inputs.BH_Right)

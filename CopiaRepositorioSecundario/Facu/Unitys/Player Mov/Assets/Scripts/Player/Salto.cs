@@ -27,7 +27,6 @@ public class Salto : MonoBehaviour
         DetectaSuelo();
         ComienzaSalto();
         SueltaSalto();
-
         CambiaGravedad();
     }
     private void FixedUpdate()

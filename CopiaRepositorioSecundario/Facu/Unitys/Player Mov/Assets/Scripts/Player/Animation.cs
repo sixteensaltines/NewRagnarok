@@ -22,6 +22,7 @@ public class Animation : MonoBehaviour
         {
             Anim.SetBool("OpenShield", false);
         }
+
         if (En_Inputs.BD_Attack)
         {
             Anim.SetBool("Attack", true);

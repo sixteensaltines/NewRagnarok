@@ -6,11 +6,9 @@ public class BloqueoV2 : MonoBehaviour
 {
     public Inputs En_Inputs;
 
-    //Escudo de frente
     private bool ActivarContador_Frente;
     public float Contador_Frente;
     public float TiempoDefault_Frente;
-
 
     [HideInInspector]
     public bool ActivarEscudo_Frente;
@@ -19,51 +17,14 @@ public class BloqueoV2 : MonoBehaviour
     {
         DondeEstaElEscudo();
         ControladorContador_Frente();
-
-        #region CONTADOR_ESCUDO_ATRAS(DESACTIVADO)
-        //ControladorContador_Atras();
-        #endregion
-
     }
     void DondeEstaElEscudo()
     {
-        #region ACTIVADOR_ESCUDO_ATRAS(DESACTIVADO)
-
-        //Activar Escudo Atras
-        /*if (En_Inputs.BD_Block && primerToque && En_Inputs.PlayMode)
-        {
-            Contador_Atras = TiempoDefault_Atras;
-            ActivarContador_Atras = true;
-            primerToque = false;
-            esperaSuelte = true;
-        }
-        if (En_Inputs.BU_Block && esperaSuelte)
-        {
-            esperaSuelte = false;
-            esperaSegundoToque = true;
-        }
-        if (En_Inputs.BH_Block && Contador_Atras > 0 && esperaSegundoToque)
-        {
-            ActivarEscudo_Atras = true;
-            ActivarContador_Atras = false;
-
-            //AccionesLayerAtras
-        }
-
-        //Reinicio despues de activar BlockBack
-        if (ActivarEscudo_Atras && !En_Inputs.BH_Block)
-        {
-            primerToque = true;
-            esperaSegundoToque = false;
-            ActivarEscudo_Atras = false;
-        }*/
-        #endregion
-
-        if (En_Inputs.BH_Block /*&& !ActivarEscudo_Atras*/)
+        if (En_Inputs.BH_Block)
         {
             ActivarContador_Frente = true;
         }
-        if(!En_Inputs.BH_Block /*&& !ActivarEscudo_Atras*/)
+        if(!En_Inputs.BH_Block)
         {
             ActivarContador_Frente = false;
             Contador_Frente = TiempoDefault_Frente;
@@ -81,22 +42,6 @@ public class BloqueoV2 : MonoBehaviour
             ActivarEscudo_Frente = true;
         }
     }
-    #region CONTADOR_ESCUDO_ATRAS(DESACTIVADO)
-    /*void ControladorContador_Atras()
-    {
-        if (ActivarContador_Atras)
-        {
-            Contador_Atras -= Time.deltaTime;
-        }
-        if (Contador_Atras <= 0)
-        {
-            primerToque = true;
-            esperaSegundoToque = false;
-
-            ActivarContador_Atras = false;
-        }
-    }*/
-    #endregion
 }
 
 

@@ -19,13 +19,9 @@ public class ModoDeJuego : MonoBehaviour
     public float TiempoDesplazamientoExp;
     public float TiempoDesplazamientoGuard;
 
-    //private bool puedeCambiarLadoSkin;
-
-
     private void Start()
     {
         En_Inputs.BD_BlockJump = false;
-        //puedeCambiarLadoSkin = true;
         En_Movimiento.Speed = VelMovimientoExp;
         En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
         En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;
@@ -33,20 +29,13 @@ public class ModoDeJuego : MonoBehaviour
     void Update()
     {
         LecturaMODO();
-
-        #region if (puedeCambiarLadoSkin) (DESACTIVADO)
-        /*if (puedeCambiarLadoSkin)
-        {
-            CambiaDeLadoSkin();
-        }*/
-        #endregion
+        CambiaDeLadoSkin();
     }
     void LecturaMODO()
     {
         if (PlayMode)
         {
             En_Inputs.BD_BlockJump = true;
-            //puedeCambiarLadoSkin = false;
             En_Movimiento.Speed = VelMovimientoGuard;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoGuard;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoGuard;
@@ -54,14 +43,12 @@ public class ModoDeJuego : MonoBehaviour
         else
         {
             En_Inputs.BD_BlockJump = false;
-            //puedeCambiarLadoSkin = true;
             En_Movimiento.Speed = VelMovimientoExp;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;
         }
     }
-    #region CAMBIA_DE_LADO_SKIN(DESACTIVADO)
-    /*void CambiaDeLadoSkin()
+    void CambiaDeLadoSkin()
     {
         if (En_Inputs.BH_Right)
         {
@@ -71,6 +58,5 @@ public class ModoDeJuego : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
-    }*/
-    #endregion
+    }
 }
