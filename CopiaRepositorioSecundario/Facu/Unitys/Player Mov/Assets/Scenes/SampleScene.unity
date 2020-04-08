@@ -8405,10 +8405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BH_Right: 0
   BH_Left: 0
-  B_GuardUp: 0
-  B_GuardMid: 0
   PlayMode: 0
-  BD_PlayMode: 0
   BH_Jump: 0
   BD_Jump: 0
   BH_Block: 0

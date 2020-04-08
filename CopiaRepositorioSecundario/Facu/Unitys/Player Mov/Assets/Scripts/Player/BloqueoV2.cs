@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class BloqueoV2 : MonoBehaviour
 {
     public Inputs En_Inputs;
@@ -15,21 +14,6 @@ public class BloqueoV2 : MonoBehaviour
 
     [HideInInspector]
     public bool ActivarEscudo_Frente;
-
-    #region VARIABLES_DE_ESCUDO_ATRAS(DESACTIVADO)
-    /*EscudoAtras
-
-    private bool primerToque = true;
-    private bool esperaSuelte;
-    private bool esperaSegundoToque;
-
-    private bool ActivarContador_Atras;
-    public float Contador_Atras;
-    public float TiempoDefault_Atras;
-
-    [HideInInspector]
-    public bool ActivarEscudo_Atras;*/
-    #endregion 
 
     private void Update()
     {
@@ -75,7 +59,6 @@ public class BloqueoV2 : MonoBehaviour
         }*/
         #endregion
 
-        //Activar Escudo Frente
         if (En_Inputs.BH_Block /*&& !ActivarEscudo_Atras*/)
         {
             ActivarContador_Frente = true;

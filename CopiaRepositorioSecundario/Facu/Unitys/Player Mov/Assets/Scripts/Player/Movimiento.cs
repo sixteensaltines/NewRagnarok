@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
-    #region Public Inputs En_Inputs
-    [Tooltip("Enlase con el script de Inputs")]
     public Inputs En_Inputs;
-    #endregion
 
-    #region public float Speed
-    [Tooltip("Velocidad a la que se mueve el player en eje Horizontal")]
     public float Speed;
-    #endregion
+
 
     private void FixedUpdate()
     {

@@ -31,7 +31,6 @@ public class Desplazamiento : MonoBehaviour
     {
         LecturaInputs();
     }
-
     private void FixedUpdate()
     {
         if (izquierda || Derecha)

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Salto : MonoBehaviour
 {
-    //EL GETBUTTONUP LO TUVE QUE REEMPLAZAR, YA QUE TENGO UN SOLO FRAME PARA CAPTURARLO, USE GETKEYUP(KEYCODE.SPACE)
-
     public Inputs En_Inputs;
 
     public bool EstaSuelo;

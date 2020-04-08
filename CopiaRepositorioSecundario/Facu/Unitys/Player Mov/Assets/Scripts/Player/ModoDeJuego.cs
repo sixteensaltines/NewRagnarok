@@ -19,13 +19,13 @@ public class ModoDeJuego : MonoBehaviour
     public float TiempoDesplazamientoExp;
     public float TiempoDesplazamientoGuard;
 
-    private bool puedeCambiarLadoSkin;
+    //private bool puedeCambiarLadoSkin;
 
 
     private void Start()
     {
         En_Inputs.BD_BlockJump = false;
-        puedeCambiarLadoSkin = true;
+        //puedeCambiarLadoSkin = true;
         En_Movimiento.Speed = VelMovimientoExp;
         En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
         En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;
@@ -33,18 +33,20 @@ public class ModoDeJuego : MonoBehaviour
     void Update()
     {
         LecturaMODO();
-        
-        if (puedeCambiarLadoSkin)
+
+        #region if (puedeCambiarLadoSkin) (DESACTIVADO)
+        /*if (puedeCambiarLadoSkin)
         {
             CambiaDeLadoSkin();
-        }
+        }*/
+        #endregion
     }
     void LecturaMODO()
     {
         if (PlayMode)
         {
             En_Inputs.BD_BlockJump = true;
-            puedeCambiarLadoSkin = false;
+            //puedeCambiarLadoSkin = false;
             En_Movimiento.Speed = VelMovimientoGuard;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoGuard;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoGuard;
@@ -52,13 +54,14 @@ public class ModoDeJuego : MonoBehaviour
         else
         {
             En_Inputs.BD_BlockJump = false;
-            puedeCambiarLadoSkin = true;
+            //puedeCambiarLadoSkin = true;
             En_Movimiento.Speed = VelMovimientoExp;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;
         }
     }
-    void CambiaDeLadoSkin()
+    #region CAMBIA_DE_LADO_SKIN(DESACTIVADO)
+    /*void CambiaDeLadoSkin()
     {
         if (En_Inputs.BH_Right)
         {
@@ -68,5 +71,6 @@ public class ModoDeJuego : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
-    }
+    }*/
+    #endregion
 }
