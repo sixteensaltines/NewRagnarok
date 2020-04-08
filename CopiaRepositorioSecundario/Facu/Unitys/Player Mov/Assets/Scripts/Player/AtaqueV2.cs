@@ -6,23 +6,26 @@ public class AtaqueV2 : MonoBehaviour
 {
     public Inputs En_Inputs;
 
+    public float RafagaDefault;     
     private float rafaga;
-    public float RafagaDefault;
-    public float TiempoEntreGolpes;
+
+    public float TiempoMinEntreGolpes;
     private bool activarContador;
 
     public bool PuedeGolpear = true;
 
-    private float tiempoCombo;
-    public float TiempoComboDefault;
+    public float TiempoMaxComboDefault;
+    private float tiempoMaxCombo;
+
     public float TiempoReinicioCombo;
 
     [HideInInspector]
     public bool ActivarAtaque;
+
     private void Start()
     {
         rafaga = RafagaDefault;
-        tiempoCombo = TiempoComboDefault;
+        tiempoMaxCombo = TiempoMaxComboDefault;
     }
     private void Update()
     {
@@ -33,10 +36,10 @@ public class AtaqueV2 : MonoBehaviour
     {
         if (En_Inputs.BD_Attack && rafaga>=1 && PuedeGolpear)
         {
-            tiempoCombo = TiempoComboDefault;
+            tiempoMaxCombo = TiempoMaxComboDefault;
             En_Inputs.BlockAtack = true;
             En_Inputs.BD_Attack = false;
-            Invoke("In_TiempoEntreGolpes", TiempoEntreGolpes);
+            Invoke("In_TiempoEntreGolpes", TiempoMinEntreGolpes);
             rafaga--;
         }
     }
@@ -48,18 +51,18 @@ public class AtaqueV2 : MonoBehaviour
         }
         if (activarContador)
         {
-            tiempoCombo -= Time.deltaTime;
+            tiempoMaxCombo -= Time.deltaTime;
         }
         if (rafaga < 1)
         {
             activarContador = false;
-            if (tiempoCombo > 0)
+            if (tiempoMaxCombo > 0)
             {
 
                 Invoke("In_ReiniciarCombo", TiempoReinicioCombo);
             }
         }
-        if (tiempoCombo < 0)
+        if (tiempoMaxCombo < 0)
         {
             En_Inputs.BlockAtack = true;
             En_Inputs.BD_Attack = false;
@@ -74,7 +77,7 @@ public class AtaqueV2 : MonoBehaviour
     }
     void In_ReiniciarCombo()
     {
-        tiempoCombo = TiempoComboDefault;
+        tiempoMaxCombo = TiempoMaxComboDefault;
         PuedeGolpear = true;
         En_Inputs.BlockAtack = false;
         En_Inputs.BD_Attack = false;

@@ -11,9 +11,11 @@ public class Accion_Manos : MonoBehaviour
     public Transform T_ManosFrente;
     public Transform T_ManosAtras;
 
-    public LayerMask Enemigo;
+    #region LECTURA_DE_MANOS_VARIABLES(DESACTIVADO)
+    /*public LayerMask Enemigo;
 
-    //public float _Damage;
+    public float _Damage;*/
+    #endregion
 
     public float RangoManos;
 
@@ -24,8 +26,9 @@ public class Accion_Manos : MonoBehaviour
 
     void Lectura()
     {
-        if (En_BloqueoV2.ActivarEscudo_Frente || En_BloqueoV2.ActivarEscudo_Atras || En_Inputs.BD_Attack)
+        if (En_BloqueoV2.ActivarEscudo_Frente/* || En_BloqueoV2.ActivarEscudo_Atras */|| En_Inputs.BD_Attack)
         {
+            #region LECTURA_DE_LAYES_EN_MANOS_(DESACTIVADO)
             /*Collider2D[] LecturaEnemigo = Physics2D.OverlapCircleAll(t_ManosPosition.position, RangoManos, Enemigo);
             Lee todo lo que este dentro del rango (TODAS LAS CAPAS) 
             for (int i = 0; i < LecturaEnemigo.Length; i++)
@@ -34,6 +37,7 @@ public class Accion_Manos : MonoBehaviour
                 la funcion "Take damage" la estaba usando para probar si funcionaba, la dejo porque puede servir
                 LecturaEnemigo[i].GetComponent<Enemigo>().TakeDamage(_Damage);
             }*/
+            #endregion
         }
     }
 
@@ -43,13 +47,16 @@ public class Accion_Manos : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(T_ManosFrente.position, RangoManos);
+
         }
         else
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(T_ManosFrente.position, RangoManos);
         }
-        if (En_BloqueoV2.ActivarEscudo_Atras)
+
+        #region DIBUJAR_MANO_ATRAS(DESACTIVADO)
+        /*if (En_BloqueoV2.ActivarEscudo_Atras)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(T_ManosAtras.position, RangoManos);
@@ -58,7 +65,9 @@ public class Accion_Manos : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(T_ManosAtras.position, RangoManos);
-        }
+        }*/
+        #endregion
+
         if (En_Inputs.BD_Attack)
         {
             Gizmos.color = Color.blue;

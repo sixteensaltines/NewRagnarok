@@ -5,6 +5,10 @@ using UnityEngine;
 public class ModoDeJuego : MonoBehaviour
 {
     public Inputs En_Inputs;
+    public Movimiento En_Movimiento;
+    public Desplazamiento En_Desplazamiento;
+
+    public bool PlayMode;
 
     public float VelMovimientoExp;
     public float VelMovimientoGuard;
@@ -15,10 +19,8 @@ public class ModoDeJuego : MonoBehaviour
     public float TiempoDesplazamientoExp;
     public float TiempoDesplazamientoGuard;
 
-    public Movimiento En_Movimiento;
-    public Desplazamiento En_Desplazamiento;
-
     private bool puedeCambiarLadoSkin;
+
 
     private void Start()
     {
@@ -30,11 +32,8 @@ public class ModoDeJuego : MonoBehaviour
     }
     void Update()
     {
-        if (En_Inputs.BD_PlayMode)
-        {
-            LecturaMODO();
-        }
-
+        LecturaMODO();
+        
         if (puedeCambiarLadoSkin)
         {
             CambiaDeLadoSkin();
@@ -42,7 +41,7 @@ public class ModoDeJuego : MonoBehaviour
     }
     void LecturaMODO()
     {
-        if (En_Inputs.PlayMode)
+        if (PlayMode)
         {
             En_Inputs.BD_BlockJump = true;
             puedeCambiarLadoSkin = false;

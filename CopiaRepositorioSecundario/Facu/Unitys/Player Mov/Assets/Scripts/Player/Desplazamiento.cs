@@ -9,7 +9,9 @@ public class Desplazamiento : MonoBehaviour
     //Se Controla desde el modo de juego.
     [HideInInspector]
     public float FuerzaDesplazamiento;
+    [HideInInspector]
     public float ContadorDesplazamiento;
+    [HideInInspector]
     public float ContadorDefaultDesplazamiento;
 
     private bool Derecha;
