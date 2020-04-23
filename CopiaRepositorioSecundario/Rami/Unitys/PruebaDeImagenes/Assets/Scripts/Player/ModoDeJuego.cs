@@ -5,6 +5,10 @@ using UnityEngine;
 public class ModoDeJuego : MonoBehaviour
 {
     public Inputs En_Inputs;
+    public Movimiento En_Movimiento;
+    public Desplazamiento En_Desplazamiento;
+
+    public bool PlayMode;
 
     public float VelMovimientoExp;
     public float VelMovimientoGuard;
@@ -15,37 +19,23 @@ public class ModoDeJuego : MonoBehaviour
     public float TiempoDesplazamientoExp;
     public float TiempoDesplazamientoGuard;
 
-    public Movimiento En_Movimiento;
-    public Desplazamiento En_Desplazamiento;
-
-    private bool puedeCambiarLadoSkin;
-
     private void Start()
     {
         En_Inputs.BD_BlockJump = false;
-        puedeCambiarLadoSkin = true;
         En_Movimiento.Speed = VelMovimientoExp;
         En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
         En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            LecturaMODO();
-        }
-
-        if(puedeCambiarLadoSkin)
-        {
-            CambiaDeLadoSkin();
-        }
+        LecturaMODO();
+        CambiaDeLadoSkin();
     }
     void LecturaMODO()
     {
-        if (En_Inputs.BD_PlayMode)
+        if (PlayMode)
         {
             En_Inputs.BD_BlockJump = true;
-            puedeCambiarLadoSkin = false;
             En_Movimiento.Speed = VelMovimientoGuard;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoGuard;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoGuard;
@@ -53,13 +43,12 @@ public class ModoDeJuego : MonoBehaviour
         else
         {
             En_Inputs.BD_BlockJump = false;
-            puedeCambiarLadoSkin = true;
             En_Movimiento.Speed = VelMovimientoExp;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;
         }
     }
-    void CambiaDeLadoSkin ()
+    void CambiaDeLadoSkin()
     {
         if (En_Inputs.BH_Right)
         {

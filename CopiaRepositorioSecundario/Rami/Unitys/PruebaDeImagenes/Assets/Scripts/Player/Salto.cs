@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Salto : MonoBehaviour
 {
-    //EL GETBUTTONUP LO TUVE QUE REEMPLAZAR, YA QUE TENGO UN SOLO FRAME PARA CAPTURARLO, USE GETKEYUP(KEYCODE.SPACE)
-
     public Inputs En_Inputs;
 
     public bool EstaSuelo;
     public Transform T_Pies;
-    private float radio = 0.50f;
+    private float radio = 0.34f;
     public float FuerzaSalto;
     public LayerMask LayerPiso;
 
@@ -29,9 +27,7 @@ public class Salto : MonoBehaviour
         DetectaSuelo();
         ComienzaSalto();
         SueltaSalto();
-
         CambiaGravedad();
-
     }
     private void FixedUpdate()
     {
@@ -62,7 +58,6 @@ public class Salto : MonoBehaviour
                 estaSaltando = true;   
         }
     }
-
     void SueltaSalto()
     {
         if (Input.GetKeyUp(KeyCode.Space) && estaSaltando)

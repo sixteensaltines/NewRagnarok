@@ -9,14 +9,16 @@ public class Desplazamiento : MonoBehaviour
     //Se Controla desde el modo de juego.
     [HideInInspector]
     public float FuerzaDesplazamiento;
+    [HideInInspector]
     public float ContadorDesplazamiento;
+    [HideInInspector]
     public float ContadorDefaultDesplazamiento;
 
-    private bool right;
-    private bool left;
+    private bool Derecha;
+    private bool izquierda;
 
     public float CadenciaDash;
-    private bool puedeDashear = true;
+    private bool puedeDesplazarse = true;
 
     private Rigidbody2D rb;
 
@@ -29,30 +31,28 @@ public class Desplazamiento : MonoBehaviour
     {
         LecturaInputs();
     }
-
     private void FixedUpdate()
     {
-        if (left || right)
+        if (izquierda || Derecha)
         {
             EjecutoDesplazamiento();
         }
-
     }
     //Update
     void LecturaInputs()
     {
-        if (puedeDashear)
+        if (puedeDesplazarse)
         {
             if (En_Inputs.BH_Dash && En_Inputs.BH_Right)
             {
-                left = false;
-                right = true;
+                izquierda = false;
+                Derecha = true;
                 En_Inputs.BlockButtons = true;
             }
             if (En_Inputs.BH_Dash && En_Inputs.BH_Left)
             {
-                right = false;
-                left = true;
+                Derecha = false;
+                izquierda = true;
                 En_Inputs.BlockButtons = true;
             }
         }
@@ -63,11 +63,11 @@ public class Desplazamiento : MonoBehaviour
     {
         if (ContadorDesplazamiento <= 0)
         {
-            left = false;
-            right = false;
+            izquierda = false;
+            Derecha = false;
             En_Inputs.BlockButtons = false;
             En_Inputs.QuitForces = false;
-            puedeDashear = false;
+            puedeDesplazarse = false;
             ContadorDesplazamiento = ContadorDefaultDesplazamiento;
             Invoke("In_CadenciaDash", CadenciaDash);
 
@@ -76,11 +76,11 @@ public class Desplazamiento : MonoBehaviour
         else
         {
             ContadorDesplazamiento -= Time.deltaTime;
-            if (left)
+            if (izquierda)
             {
                 rb.velocity = Vector2.left * FuerzaDesplazamiento;
             }
-            if (right)
+            if (Derecha)
             {
                 rb.velocity = Vector2.right * FuerzaDesplazamiento;
             }
@@ -89,6 +89,6 @@ public class Desplazamiento : MonoBehaviour
     //Invokes
     private void In_CadenciaDash()
     {
-        puedeDashear = true;
+        puedeDesplazarse = true;
     }
 }
