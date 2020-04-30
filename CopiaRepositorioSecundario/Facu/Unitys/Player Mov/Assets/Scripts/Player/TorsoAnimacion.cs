@@ -21,5 +21,13 @@ public class TorsoAnimacion : MonoBehaviour
         {
             Anim.SetBool("WalkTorso", false);
         }
+        if (En_Inputs.PlayMode)
+        {
+            Anim.SetBool("IsModeGuard", true);
+        }
+        else
+        {
+            Anim.SetBool("IsModeGuard", false);
+        }
     }
 }
