@@ -21,5 +21,13 @@ public class AnimacionPiernas : MonoBehaviour
         {
             Anim.SetBool("WalkLegs", false);
         }
+        if (En_Inputs.PlayMode)
+        {
+            Anim.SetBool("IsModeGuard", true);
+        }
+        else 
+        {
+            Anim.SetBool("IsModeGuard", false);
+        }
     }
 }
