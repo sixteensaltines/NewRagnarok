@@ -2698,8 +2698,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4331486220049030569}
   m_Bounds:
-    m_Center: {x: -6.369134, y: 3.2363153, z: 0}
-    m_Extent: {x: 0.5347774, y: 1.56456, z: 0}
+    m_Center: {x: -5.9654593, y: 2.1683664, z: 0}
+    m_Extent: {x: 2.3599477, y: 0.44280982, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!4 &4331486219944228633
@@ -2875,7 +2875,7 @@ Transform:
   m_LocalScale: {x: 0.96, y: 0.7032235, z: 0.96}
   m_Children: []
   m_Father: {fileID: 4331486220757759319}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4331486220049030574
 GameObject:
@@ -3055,8 +3055,8 @@ MonoBehaviour:
   - {fileID: 4331486220699614743}
   - {fileID: 4331486220757759319}
   m_Bounds:
-    m_Center: {x: 0.000011086464, y: -0.00029325485, z: 0}
-    m_Extent: {x: 0.81500065, y: 1.0797064, z: 0}
+    m_Center: {x: 0.00003159046, y: -0.0002989769, z: 0}
+    m_Extent: {x: 0.81500065, y: 1.0797007, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4331486220672695556
@@ -3190,7 +3190,7 @@ MonoBehaviour:
   - {fileID: 4331486221654647944}
   - {fileID: 4331486220996103076}
   m_Bounds:
-    m_Center: {x: -0.00060513616, y: -0.000038683414, z: 0}
+    m_Center: {x: -0.000585109, y: -0.00004965067, z: 0}
     m_Extent: {x: 0.35933417, y: 0.48496675, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -3221,6 +3221,7 @@ Transform:
   m_LocalPosition: {x: 1.0950313, y: 1.2771343, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4331486221271483354}
   - {fileID: 4331486220757759319}
   m_Father: {fileID: 4331486220672695559}
   m_RootOrder: 0
@@ -3282,12 +3283,11 @@ Transform:
   m_LocalPosition: {x: 0.40518492, y: -0.00000005836184, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
   m_Children:
-  - {fileID: 4331486221271483354}
   - {fileID: 4331486220049030569}
   - {fileID: 4331486221654647944}
   - {fileID: 4331486221037850593}
   m_Father: {fileID: 4331486220699614743}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.561}
 --- !u!1 &4331486220775634016
 GameObject:
@@ -3411,7 +3411,7 @@ Transform:
   m_Children:
   - {fileID: 4331486220409000031}
   m_Father: {fileID: 4331486220757759319}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4331486221037850598
 GameObject:
@@ -3528,8 +3528,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4331486221271483354}
   m_Bounds:
-    m_Center: {x: -3.658823, y: -0.64773035, z: 0}
-    m_Extent: {x: 0.66226304, y: 3.3420424, z: 0}
+    m_Center: {x: -1.8275199, y: -0.61414653, z: 0}
+    m_Extent: {x: 3.302412, y: 0.8190482, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4331486221056104340
@@ -3848,13 +3848,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4331486221271483355}
-  m_LocalRotation: {x: -0, y: -0, z: -0.9990174, w: -0.04432131}
-  m_LocalPosition: {x: 2.54, y: 0.15, z: 0}
-  m_LocalScale: {x: 1.1100303, y: 1.62151, z: 0.84}
+  m_LocalRotation: {x: -0, y: -0, z: -0.99715793, w: -0.07533979}
+  m_LocalPosition: {x: 2.9495986, y: -0.0080525875, z: 0}
+  m_LocalScale: {x: 1.1100308, y: 1.6215104, z: 0.84000015}
   m_Children:
   - {fileID: 4331486221421902738}
   - {fileID: 69329900}
-  m_Father: {fileID: 4331486220757759319}
+  m_Father: {fileID: 4331486220699614743}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -185.081}
 --- !u!1 &4331486221271483355
@@ -4615,8 +4615,8 @@ MonoBehaviour:
   - {fileID: 4331486220409000031}
   - {fileID: 4331486221037850593}
   m_Bounds:
-    m_Center: {x: 0.3702501, y: 0.00032663345, z: 0}
-    m_Extent: {x: 0.51472616, y: 1.3045583, z: 0}
+    m_Center: {x: 0.571164, y: 0.39941055, z: 0}
+    m_Extent: {x: 0.8107626, y: 0.90783226, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!4 &4331486221620464717
@@ -4697,7 +4697,7 @@ Transform:
   m_Children:
   - {fileID: 4331486220996103076}
   m_Father: {fileID: 4331486220757759319}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4331486221654647945
 GameObject:
@@ -6596,8 +6596,8 @@ MonoBehaviour:
   - {fileID: 6706440759954457885}
   - {fileID: 434628670907178840}
   m_Bounds:
-    m_Center: {x: 1.603256, y: 0.22465968, z: 0}
-    m_Extent: {x: 0.47035217, y: 1.2098029, z: 0}
+    m_Center: {x: 1.4916809, y: 0.23615813, z: 0}
+    m_Extent: {x: 0.47153634, y: 1.1994166, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!4 &7538246540472396698
