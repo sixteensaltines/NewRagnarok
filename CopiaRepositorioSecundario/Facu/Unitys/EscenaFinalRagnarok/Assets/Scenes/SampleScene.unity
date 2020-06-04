@@ -2698,8 +2698,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4331486220049030569}
   m_Bounds:
-    m_Center: {x: -5.9654593, y: 2.1683664, z: 0}
-    m_Extent: {x: 2.3599477, y: 0.44280982, z: 0}
+    m_Center: {x: -6.416064, y: 3.0478902, z: 0}
+    m_Extent: {x: 0.9620476, y: 1.493015, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!4 &4331486219944228633
@@ -4615,8 +4615,8 @@ MonoBehaviour:
   - {fileID: 4331486220409000031}
   - {fileID: 4331486221037850593}
   m_Bounds:
-    m_Center: {x: 0.571164, y: 0.39941055, z: 0}
-    m_Extent: {x: 0.8107626, y: 0.90783226, z: 0}
+    m_Center: {x: 0.11891073, y: 0.035247564, z: 0}
+    m_Extent: {x: 0.50754917, y: 1.2792156, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!4 &4331486221620464717
@@ -5426,7 +5426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4606776575498528953
 Transform:
   m_ObjectHideFlags: 0
