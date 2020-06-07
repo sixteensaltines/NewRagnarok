@@ -6,6 +6,7 @@ public class AnimacionPlayer : MonoBehaviour
 {
 
     public Animator anim;
+    public BloqueoV2 En_BloqueoV2;
     public Inputs En_Inputs;
 
     void Start()
@@ -30,6 +31,15 @@ public class AnimacionPlayer : MonoBehaviour
         }
         else
         {
+
+        }
+        if (En_BloqueoV2.ActivarAnimacionEscudo)
+        {
+            anim.SetBool("EscudoFrente", true);
+        }
+        else
+        {
+            anim.SetBool("EscudoFrente", false);
         }
 
     }
