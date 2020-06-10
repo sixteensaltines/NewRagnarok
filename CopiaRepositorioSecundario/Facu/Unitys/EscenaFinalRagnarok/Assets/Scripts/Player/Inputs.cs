@@ -7,8 +7,6 @@ public class Inputs : MonoBehaviour
     public bool BH_Right;
     public bool BH_Left;
 
-    public bool PlayMode;
-
     public bool BH_Jump;
     public bool BD_Jump;
 
@@ -17,14 +15,14 @@ public class Inputs : MonoBehaviour
     public bool BU_Block;
 
     public bool BD_Attack;
-    public bool BlockAtack;
+    public bool BlockAttack;
 
     public bool BH_Dash;
 
     //Bloqueo de botones
-    public bool BlockButtons = false;
-    public bool BD_BlockJump = false;
-    public bool QuitForces = false;
+    public bool BlockButtons;
+    public bool BlockJump;
+    public bool QuitForces;
 
     void Update()
     {
@@ -34,18 +32,18 @@ public class Inputs : MonoBehaviour
             Block();
             Dash();
 
-            if (!BD_BlockJump)
+            if (!BlockJump)
             {
                 Jump();
             }
 
-            if (!BlockAtack)
+            if (!BlockAttack)
             {
                 Attack();
             }
 
         }
-        if (BlockButtons && QuitForces) 
+        if (BlockButtons && QuitForces)
         {
             BH_Left = false;
             BH_Right = false;

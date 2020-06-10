@@ -21,7 +21,7 @@ public class ModoDeJuego : MonoBehaviour
 
     private void Start()
     {
-        En_Inputs.BD_BlockJump = false;
+        En_Inputs.BlockJump = false;
         En_Movimiento.Speed = VelMovimientoExp;
         En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
         En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;
@@ -35,14 +35,16 @@ public class ModoDeJuego : MonoBehaviour
     {
         if (PlayMode)
         {
-            En_Inputs.BD_BlockJump = true;
+            En_Inputs.BlockJump = true;
+            En_Inputs.BlockAttack = false;
             En_Movimiento.Speed = VelMovimientoGuard;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoGuard;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoGuard;
         }
         else
         {
-            En_Inputs.BD_BlockJump = false;
+            En_Inputs.BlockJump = false;
+            En_Inputs.BlockAttack = true;
             En_Movimiento.Speed = VelMovimientoExp;
             En_Desplazamiento.FuerzaDesplazamiento = FuerzaDesplazamientoExp;
             En_Desplazamiento.ContadorDefaultDesplazamiento = TiempoDesplazamientoExp;

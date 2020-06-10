@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AtaqueV2 : MonoBehaviour
 {
-    public Inputs En_Inputs;
+    /*public Inputs En_Inputs;
 
     public float RafagaDefault;     
     private float rafaga;
@@ -81,5 +81,5 @@ public class AtaqueV2 : MonoBehaviour
         En_Inputs.BlockAtack = false;
         En_Inputs.BD_Attack = false;
         rafaga = RafagaDefault;
-    }
+    }*/
 }
